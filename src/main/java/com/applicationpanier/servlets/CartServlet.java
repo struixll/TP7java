@@ -1,6 +1,8 @@
 package com.applicationpanier.servlets;
 
 import java.io.IOException;
+
+import javax.ejb.EJB;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
@@ -14,7 +16,9 @@ import com.applicationpanier.panier.CartBeanLocal;
 @WebServlet("/cart")
 public class CartServlet extends HttpServlet {
 
+	@EJB
 	private CartBeanLocal cartBean;
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {

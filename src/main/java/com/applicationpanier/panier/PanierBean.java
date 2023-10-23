@@ -1,6 +1,7 @@
 package com.applicationpanier.panier;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Remove;
@@ -10,7 +11,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 
 @Stateful
-public class CartBean implements CartBeanLocal {
+public class PanierBean implements CartBeanLocal {
     private List<Product> cart = new ArrayList<>();
     
     @Override
@@ -37,11 +38,14 @@ public class CartBean implements CartBeanLocal {
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @Override
     public void removeProduct(String productId) {
-        for (Product product : cart) {
+        Iterator<Product> iterator = cart.iterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
             if (product.getId().equals(productId)) {
-                 cart.remove(product);
-                 break; 
-             }
-         }
+                iterator.remove();
+                break;
+            }
+        }
     }
+
 }
