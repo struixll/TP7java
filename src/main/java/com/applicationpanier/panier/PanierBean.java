@@ -3,8 +3,6 @@ package com.applicationpanier.panier;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import javax.ejb.Remove;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
